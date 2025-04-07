@@ -2,6 +2,7 @@
 #define SSTACK
 
 #define SIZE 10
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef int element;
@@ -12,13 +13,13 @@ typedef struct Stack
 }
 Stack;
 
-void sCreate(Stack* s);
-int sIsFull(Stack s);
-int sIsEmpty(Stack s);
-void sPush(Stack* s, element e);
-element sPop(Stack* s);
-void sDelete(Stack* s);
-void sCopyStack(Stack* s, Stack* c);
+void create_stack(Stack* s);
+int isFull_stack(Stack s);
+int isEmpty_stack(Stack s);
+void push_stack(Stack* s, element e);
+element pop_stack(Stack* s);
+void delete_stack(Stack* s);
+void copy_stack(Stack* s, Stack* c);
 
 #include "sstack.c"
 #endif

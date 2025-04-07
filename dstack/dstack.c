@@ -1,11 +1,11 @@
 #include "dstack.h"
 
-void dCreate(Node** s)
+void create_dstack(Node** s)
 {
     *s = NULL;
 }
 
-int dIsEmpty(Node* s)
+int isEmpty_dstack(Node* s)
 {
     if(s == NULL)
     {
@@ -17,7 +17,7 @@ int dIsEmpty(Node* s)
     }
 }
 
-void dPush(Node** s, element e)
+void push_dstack(Node** s, element e)
 {
     Node* new = (Node*)malloc(sizeof(Node));
     if(new == NULL)
@@ -29,10 +29,10 @@ void dPush(Node** s, element e)
     *s = new;
 }
 
-element dPop(Node** s)
+element pop_dstack(Node** s)
 {
     element eaux;
-    if(!dIsEmpty(*s))
+    if(!isEmpty_dstack(*s))
     {
         eaux = (*s)->e;
         Node* saux = (*s);
@@ -47,28 +47,29 @@ element dPop(Node** s)
     return eaux;
 }
 
-void dDelete(Node** s)
+void delete_dstack(Node** s)
 {
-    while(!dIsEmpty(*s))
+    while(!isEmpty_dstack(*s))
     {
-        element e = dPop(s);
+        element e = pop_dstack(s);
     }
 }
 
-void dPrintStack(Node** s)
+void print_dstack(Node** s)
 {
     Node* aux = NULL;
     element e;
 
-    while(!dIsEmpty(*s))
+    while(!isEmpty_dstack(*s))
     {
-        e = dPop(s);
-        dPush(&aux,e);
+        e = pop_dstack(s);
+        push_dstack(&aux,e);
+	printf("%d", e);
     }
-    while(!dIsEmpty(aux))
+    while(!isEmpty_dstack(aux))
     {
-        e = dPop(&aux);
-        printf("%d\n", e);
-        dPush(s,e);
+        e = pop_dstack(&aux);
+        push_dstack(s,e);
     }
+    printf("\n");
 }

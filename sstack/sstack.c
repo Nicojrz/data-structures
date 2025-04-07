@@ -1,11 +1,11 @@
 #include "sstack.h"
 
-void sCreate(Stack* s)
+void create_stack(Stack* s)
 {
     s -> top = -1;
 }
 
-int sIsFull(Stack s)
+int isFull_stack(Stack s)
 {
     if(s.top == (SIZE - 1))
     {
@@ -17,7 +17,7 @@ int sIsFull(Stack s)
     }
 }
 
-int sIsEmpty(Stack s)
+int isEmpty_stack(Stack s)
 {
     if(s.top == -1)
     {
@@ -29,9 +29,9 @@ int sIsEmpty(Stack s)
     }
 }
 
-void sPush(Stack* s, element e)
+void push_stack(Stack* s, element e)
 {
-    if(sIsFull(*s))
+    if(isFull_stack(*s))
     {
         printf("Error overflow\n");
     }
@@ -42,10 +42,10 @@ void sPush(Stack* s, element e)
     }
 }
 
-element sPop(Stack* s)
+element pop_stack(Stack* s)
 {
     element aux;
-    if (sIsEmpty(*s))
+    if (isEmpty_stack(*s))
     {
         printf("Error underflow\n");
         aux = 0;
@@ -58,26 +58,26 @@ element sPop(Stack* s)
     return aux;
 }
 
-void sDelete(Stack* s)
+void delete_stack(Stack* s)
 {
-    while(!sIsEmpty(*s))
+    while(!isEmpty_stack(*s))
     {
-        element e = sPop(s);
+        element e = pop_stack(s);
     }
 }
 
-void sCopyStack(Stack* s, Stack* c)
+void copy_stack(Stack* s, Stack* c)
 {
     Stack tmp;
-    sCreate(&tmp);
-    while (!sIsEmpty(*s))
+    create_stack(&tmp);
+    while (!isEmpty_stack(*s))
     {
-        sPush(&tmp, sPop(s));
+        push_stack(&tmp, sPop(s));
     }
-    while (!sIsEmpty(tmp))
+    while (!isEmpty_stack(tmp))
     {
-        element e = sPop(&tmp);
-        sPush(s,e);
-        sPush(c,e);
+        element e = pop_stack(&tmp);
+        push_stack(s,e);
+        push_stack(c,e);
     }
 }
