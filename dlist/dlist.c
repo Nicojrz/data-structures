@@ -2,7 +2,7 @@
 
 void create_list(List *l)
 {
-    l = NULL;
+    l->head = NULL;
 }
 
 int isEmpty_list(List l)
@@ -38,8 +38,7 @@ void insertEnd_list(List *l, element e)
 
 void insertAfter_list(List *l, element e, int i)
 {
-    Node *naux;
-    if(i<0)
+    if(i < 0)
     {
         printf("Indice invalido.\n");
     }
@@ -50,11 +49,12 @@ void insertAfter_list(List *l, element e, int i)
     else
     {
         int k;
-        for(k=1, naux=l->head; k<i && naux!=NULL; k++, naux=naux->next);
+        Node *naux;
+	    for(k=1, naux=l->head; k<i && naux!=NULL; k++, naux=naux->next);
 
-	if(naux==NULL)
-        {
-            printf("Indice invalido.\n");
+	    if(naux==NULL)
+        {  
+        printf("Indice invalido.\n");
         }
         else
         {
@@ -86,23 +86,32 @@ element deleteFirst_list(List *l)
 	return e;
 }
 
-element deleteEnd_list(List *l);
+element deleteEnd_list(List *l)
 {
 	element e;
 
-        if(isEmpty_list(*l))
+    if(isEmpty_list(*l))
+    {
+        printf("La lista esta vacia.\n");
+        e = -1;
+    }
+    else
+    {
+        if(l->head->next == NULL)
         {
-                printf("La lista esta vacia.\n");
-                e = -1;
+            e = l->head->e;
+            free(l->head);
+            l->head = NULL;
         }
         else
         {
-		Node *naux; 
-		for(naux=l->head; naux->next!=NULL; naux=naux->next);
-
-                e = naux->e;
-                free(naux);
+            Node *naux;
+            for(naux=l->head; naux->next->next!=NULL; naux=naux->next);
+            e = naux->next->e;
+            free(naux->next);
+            naux->next = NULL;
         }
+    }
         
 	return e;
 }
@@ -112,46 +121,103 @@ element deleteNode_list(List *l, int i)
 	element e;
 
 	if(i < 0)
-        {
-                printf("Indice invalido.\n");
+    {
+        printf("Indice invalido.\n");
 		e = -1;
-        }
+    }
 	else if(isEmpty_list(*l))
-        {
-                printf("La lista esta vacia.\n");
-                e = -1;
-       	}
-        else
-        {
+    {
+        printf("La lista esta vacia.\n");
+        e = -1;
+    }
+    else
+    {
 		int k;
-                Node *naux;
-                for(k=1, naux=l->head; k<i && naux!=NULL; k++, naux=naux->next);
+        Node *naux;
+        for(k=1, naux=l->head; k<i && naux!=NULL; k++, naux=naux->next);
 
 		if(naux == NULL)
 		{
 			printf("Indice invalido.\n");
-                	e = -1;
+        	e = -1;
 		}
 		else
 		{
 			e = naux->e;
-	                free(naux);
+	       free(naux);
 		}
-        }
+    }
 
-        return e;
+    return e;
 }
 
 void delete_list(List *l)
 {
 	while(!isEmpty_list(*l))
 	{
-		
+		element e = deleteFirst_list(l);	
 	}
 }
 
-element searchNode_list(List *l, int i);
-int searchElement_list(List *l, element e);
+element searchNode_list(List *l, int i)
+{
+	element e;
+
+	if(i < 0)
+    {
+        printf("Indice invalido.\n");
+        e = -1;
+    }
+    else if(isEmpty_list(*l))
+    {
+        printf("La lista esta vacia.\n");
+        e = -1;
+    }
+    else
+    {
+	    int k;
+		Node *naux;
+		for(k=1, naux=l->head; k<i+1 && naux!=NULL; k++, naux=naux->next);
+		
+		if(naux == NULL)
+        {
+            printf("Indice invalido.\n");
+            e = -1;
+        }
+        else
+        {
+            e = naux->e;
+        }
+	}
+
+	return e;
+}
+
+int searchElement_list(List *l, element e)
+{
+	int index = -1;
+
+	if(isEmpty_list(*l))
+    {
+        printf("La lista esta vacia.\n");
+    }
+    else
+    {
+        int k;
+		Node *naux;
+        
+        for(k=1, naux=l->head; naux!=NULL; k++, naux=naux->next)
+		{
+			if(naux->e == e)
+			{
+                index = k;
+				break;
+			}
+		}
+	}
+
+	return index;
+}
 
 void print_list(List listita)
 {
