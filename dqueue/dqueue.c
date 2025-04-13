@@ -1,4 +1,4 @@
-#include <dqueue.h>
+#include "dqueue.h"
 
 void create_dqueue(DQueue *q)
 {	
@@ -8,7 +8,7 @@ void create_dqueue(DQueue *q)
 
 int isEmpty_dqueue(DQueue q)
 {	
-	return q->head == NULL;
+	return q.head == NULL;
 }
 
 void enqueue_dqueue(DQueue *q, element e)
@@ -34,7 +34,7 @@ element dequeue_dqueue(DQueue *q)
 	
 	if(isEmpty_dqueue(*q))
 	{
-		printf("Error de underflow."\n);
+		printf("Error de underflow.\n");
 		e = -1;
 	}
 	else
@@ -58,7 +58,7 @@ element dequeue_dqueue(DQueue *q)
 	return e;
 }
 
-void delete_dequeue(DQueue *q)
+void delete_dqueue(DQueue *q)
 {
 	element e;
 	
@@ -73,17 +73,17 @@ void print_dqueue(DQueue q)
 	DQueue qaux;
 	element e;
 	
-	create(&qaux);
+	create_dqueue(&qaux);
 	
 	while(!isEmpty_dqueue(q))
 	{
-		e = dequeue_dqueue(&q));
+		e = dequeue_dqueue(&q);
 		printf("%d\n",e);
 		enqueue_dqueue(&qaux, e);
 	}
-	while(!isEmpty_dqueue(aux))
+	while(!isEmpty_dqueue(qaux))
 	{
-		e = dequeue_dqueue(&aux);
+		e = dequeue_dqueue(&qaux);
 		enqueue_dqueue(&q, e);
 	}
 }
