@@ -21,7 +21,7 @@ int isEmpty_dqueue(DQueue q);
 void enqueue_dqueue(DQueue *q, element e);
 element dequeue_dqueue(DQueue *q);
 void delete_dqueue(DQueue *q);
-void print_dqueue(DQueue q);
+void print_dqueue(DQueue *q);
 
 #include "dqueue.c"
 #endif

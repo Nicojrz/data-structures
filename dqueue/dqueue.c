@@ -68,22 +68,22 @@ void delete_dqueue(DQueue *q)
 	}
 }
 
-void print_dqueue(DQueue q)
+void print_dqueue(DQueue *q)
 {
 	DQueue qaux;
 	element e;
 	
 	create_dqueue(&qaux);
 	
-	while(!isEmpty_dqueue(q))
+	while(!isEmpty_dqueue(*q))
 	{
-		e = dequeue_dqueue(&q);
+		e = dequeue_dqueue(q);
 		printf("%d\n",e);
 		enqueue_dqueue(&qaux, e);
 	}
 	while(!isEmpty_dqueue(qaux))
 	{
 		e = dequeue_dqueue(&qaux);
-		enqueue_dqueue(&q, e);
+		enqueue_dqueue(q, e);
 	}
 }

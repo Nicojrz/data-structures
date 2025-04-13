@@ -12,12 +12,12 @@ int main()
 	enqueue_dqueue(&cola, 45);
 	enqueue_dqueue(&cola, 325);
 	
-	print_dqueue(cola);
+	print_dqueue(&cola);
 	
 	element e = dequeue_dqueue(&cola);
 	e = dequeue_dqueue(&cola);
 	
-	print_dqueue(cola);
+	print_dqueue(&cola);
 	
 	delete_dqueue(&cola);
 	
