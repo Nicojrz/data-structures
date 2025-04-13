@@ -5,13 +5,15 @@
 #include <stdio.h>
 
 typedef int element;
-
 typedef struct Node
 {
     element e;
-    struct Node* next;
+    struct Node *next;
+} Node;
+typedef struct DStack
+{
+	Node *top;
 }
-Node;
 
 void create_dstack(Node** s);
 int isEmpty_dstack(Node* s);
