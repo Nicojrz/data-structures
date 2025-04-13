@@ -6,13 +6,12 @@
 #include <stdlib.h>
 
 typedef int element;
-typedef struct Queue
+typedef struct SQueue
 {
 	element Q[SIZE];
 	int head;
 	int tail;
-}
-Queue;
+} SQueue;
 
 int next(int n);
 
