@@ -1,6 +1,6 @@
 #include "sstack.h"
 
-void create_stack(Stack* s)
+void create_stack(Stack *s)
 {
     s -> top = -1;
 }
@@ -29,7 +29,7 @@ int isEmpty_stack(Stack s)
     }
 }
 
-void push_stack(Stack* s, element e)
+void push_stack(Stack *s, element e)
 {
     if(isFull_stack(*s))
     {
@@ -42,7 +42,7 @@ void push_stack(Stack* s, element e)
     }
 }
 
-element pop_stack(Stack* s)
+element pop_stack(Stack *s)
 {
     element aux;
     if (isEmpty_stack(*s))
@@ -58,7 +58,7 @@ element pop_stack(Stack* s)
     return aux;
 }
 
-void delete_stack(Stack* s)
+void delete_stack(Stack *s)
 {
     while(!isEmpty_stack(*s))
     {
@@ -66,7 +66,7 @@ void delete_stack(Stack* s)
     }
 }
 
-void copy_stack(Stack* s, Stack* c)
+void copy_stack(Stack *s, Stack *c)
 {
     Stack tmp;
     create_stack(&tmp);
