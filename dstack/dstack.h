@@ -10,10 +10,6 @@ typedef struct Node
     element e;
     struct Node *next;
 } Node;
-typedef struct DStack
-{
-	Node *top;
-}
 
 void create_dstack(Node** s);
 int isEmpty_dstack(Node* s);
