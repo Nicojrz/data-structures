@@ -20,18 +20,16 @@ typedef struct DList
 } DList;
 
 void create_dlist(DList *l);
-int isEmpty_dlist(Dlist l);
-void insertFirst_dlist(Dlist *l, element e);
-void insertEnd_dlist(Dlist *l, element e);
-void insertAfter_dlist(Dlist *l, element e, int i);
+int isEmpty_dlist(DList l);
+void insertFirst_dlist(DList *l, element e);
+void insertEnd_dlist(DList *l, element e);
+void insertAfter_dlist(DList *l, element e, int i);
 element deleteFirst_dlist(DList *l);
 element deleteEnd_dlist(DList *l);
 element deleteNode_dlist(DList *l, int i);
 void delete_dlist(DList *l);
-element searchNode_dlist(DList *l, int i);
-int searchElement_dlist(DList *l, element e);
-void print__dlist(DList *l);
-
-#include "dlist.c"
+Node * searchNode_dlist(DList l, int i);
+Node * searchElement_dlist(DList l, element e);
+void print_dlist(DList l);
 
 #endif
