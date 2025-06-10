@@ -9,27 +9,27 @@ typedef int element;
 typedef struct Node
 {
 	element e;
+	struct Node *prev;
 	struct Node *next;
 } Node;
 
-typedef struct List
+typedef struct DList
 {
 	Node *head;
-} List;
+	Node *tail;
+} DList;
 
-void create_list(List *l);
-int isEmpty_list(List l);
-void insertFirst_list(List *l, element e);
-void insertEnd_list(List *l, element e);
-void insertAfter_list(List *l, element e, int i);
-element deleteFirst_list(List *l);
-element deleteEnd_list(List *l);
-element deleteNode_list(List *l, int i);
-void delete_list(List *l);
-element searchNode_list(List *l, int i);
-int searchElement_list(List *l, element e);
-void print_list(List l);
-
-#include "dlist.c"
+void create_dlist(DList *l);
+int isEmpty_dlist(DList l);
+void insertFirst_dlist(DList *l, element e);
+void insertEnd_dlist(DList *l, element e);
+void insertAfter_dlist(DList *l, element e, int i);
+element deleteFirst_dlist(DList *l);
+element deleteEnd_dlist(DList *l);
+element deleteNode_dlist(DList *l, int i);
+void delete_dlist(DList *l);
+Node * searchNode_dlist(DList l, int i);
+Node * searchElement_dlist(DList l, element e);
+void print_dlist(DList l);
 
 #endif
