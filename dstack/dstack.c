@@ -1,11 +1,11 @@
 #include "dstack.h"
 
-void create_dstack(Node** s)
+void create_dstack(node** s)
 {
     *s = NULL;
 }
 
-int isEmpty_dstack(Node* s)
+int isEmpty_dstack(node* s)
 {
     if(s == NULL)
     {
@@ -17,9 +17,9 @@ int isEmpty_dstack(Node* s)
     }
 }
 
-void push_dstack(Node** s, element e)
+void push_dstack(node** s, element e)
 {
-    Node* new = (Node*)malloc(sizeof(Node));
+    node* new = (node*)malloc(sizeof(node));
     if(new == NULL)
     {
 	printf("Error memoria dPush.\n");
@@ -29,13 +29,13 @@ void push_dstack(Node** s, element e)
     *s = new;
 }
 
-element pop_dstack(Node** s)
+element pop_dstack(node** s)
 {
     element eaux;
     if(!isEmpty_dstack(*s))
     {
         eaux = (*s)->e;
-        Node* saux = (*s);
+        node* saux = (*s);
         *s = (*s)->next;
         free(saux);
     }
@@ -47,7 +47,7 @@ element pop_dstack(Node** s)
     return eaux;
 }
 
-void delete_dstack(Node** s)
+void delete_dstack(node** s)
 {
     while(!isEmpty_dstack(*s))
     {
@@ -55,9 +55,9 @@ void delete_dstack(Node** s)
     }
 }
 
-void print_dstack(Node** s)
+void print_dstack(node** s)
 {
-    Node* aux = NULL;
+    node* aux = NULL;
     element e;
 
     while(!isEmpty_dstack(*s))

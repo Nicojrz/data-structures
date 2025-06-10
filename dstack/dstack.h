@@ -5,18 +5,18 @@
 #include <stdio.h>
 
 typedef int element;
-typedef struct Node
+typedef struct node
 {
     element e;
-    struct Node *next;
-} Node;
+    struct node *next;
+} node;
 
-void create_dstack(Node** s);
-int isEmpty_dstack(Node* s);
-void push_dstack(Node** s, element e);
-element pop_dstack(Node** s);
-void delete_dstack(Node** s);
-void print_dstack(Node** s);
+void create_dstack(node** s);
+int isEmpty_dstack(node* s);
+void push_dstack(node** s, element e);
+element pop_dstack(node** s);
+void delete_dstack(node** s);
+void print_dstack(node** s);
 
 #include "dstack.h"
 

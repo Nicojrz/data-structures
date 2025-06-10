@@ -53,7 +53,7 @@ element pop_stack(Stack *s)
     else
     {
         aux = s -> st[s -> top];
-	s->top--;
+	    s->top--;
     }
     return aux;
 }
